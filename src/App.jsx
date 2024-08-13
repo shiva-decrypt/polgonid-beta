@@ -9,6 +9,7 @@ function App() {
   const [sessionId, setsessionId] = useState()
   const [isPolling, setIsPolling] = useState(false);
   const [currentState, setcurrentState] = useState(0) // 0 for form Input || // 1 for Qr // 2 for successfull
+  const [iden3Link, setiden3Link] = useState(null)
   const [id, setid] = useState()
   const [formData, setFormData] = useState({
     fullName: '',
@@ -36,6 +37,7 @@ function App() {
           );
 
           if (response?.data?.status === "done") {
+            setiden3Link(response?.data?.qrCode)
             setcurrentState(2);
             setIsPolling(false);
           }
@@ -233,18 +235,32 @@ function App() {
           </div>
         </form>
       </div>}
-      {currentState === 1 && <div className=' max-w-[420px] min-h-screen h-full w-full flex flex-col justify-center items-center bg-white'>
+      {currentState === 1 && <div className=' max-w-[420px] min-h-screen h-full w-full flex flex-col justify-center items-center gap-4 bg-white'>
+        <h1 className='text-black  text-xl'>
+          Make sure you have a PolygonID wallet to scan this, or
+          <a href="your-link-here" className='text-blue-500 underline'>install it from here</a>
+        </h1>
+
         <QRCode
           size={256}
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
           value={qrcodeLink}
           viewBox={`0 0 256 256`}
         />
-        <h1 className='text-black mt-20 text-3xl'>Scan to get your vc</h1>
+        <h1 className='text-black  text-xl'>Scan to get your Verified Credentilas in PolygonId</h1>
       </div>}
       {currentState === 2 && <div style={{ height: "auto", width: "100%" }} className=' max-w-[420px] mb-auto bg-white'>
 
-        <h1 className='text-green-500 text-3xl font-bold mt-20'>Credential sent Succesfully</h1>
+        <h1 className='text-green-500 text-3xl font-bold mt-20'>Credential sent via notification</h1>
+      
+        <h2 className='text-black mt-8 mb-2'>Missed the notification?.</h2>
+        <h3 className='text-black my-2'>Scan the QR code to add the credential to your wallet</h3>
+        <QRCode
+          size={256}
+          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+          value={iden3Link}
+          viewBox={`0 0 256 256`}
+        />
       </div>}
 
     </div>
