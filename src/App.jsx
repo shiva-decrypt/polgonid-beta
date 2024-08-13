@@ -238,7 +238,7 @@ function App() {
       {currentState === 1 && <div className=' max-w-[420px] min-h-screen h-full w-full flex flex-col justify-center items-center gap-4 bg-white'>
         <h1 className='text-black  text-xl'>
           Make sure you have a PolygonID wallet to scan this, or
-          <a href="your-link-here" className='text-blue-500 underline'>install it from here</a>
+          <a href="https://play.google.com/store/apps/details?id=com.polygonid.wallet&hl=en_IN&pli=1" className='text-blue-500 underline'>install it from here</a>
         </h1>
 
         <QRCode
