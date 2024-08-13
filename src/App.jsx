@@ -92,7 +92,7 @@ function App() {
           "limitedClaims": null,
           "mtProof": false,
           "refreshService": null,
-          "schemaID": "227d206b-6480-43eb-adba-24705adc8ec0",
+          "schemaID": "a6d93298-714b-4f6f-a52e-3824d7864417",
           "signatureProof": true
         },
         {
